@@ -15,9 +15,9 @@ const HomePage = () => {
         setLoading(false);
     }
     
-    useEffect(() => {
-        getList();
-    }, [])
+    // useEffect(() => {
+    //     getList();
+    // }, [])
 
     const handleNextPage = () => {
         setPageNo(pageNo+1);
@@ -25,10 +25,8 @@ const HomePage = () => {
     }
 
     return (
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
+        <div className="">
+          <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
             {loading ? <div>Loading....</div> : null}
@@ -36,7 +34,6 @@ const HomePage = () => {
                 <img src={items.urls.thumb} key={index}/>
             ))}
             <button onClick={handleNextPage}>Next</button>
-          </header>
         </div>
       );
 }
