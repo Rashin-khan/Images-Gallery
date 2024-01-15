@@ -34,7 +34,6 @@ export async function searchList(pageNo, query) {
 }
 
 export async function likePhoto(id, apiMethod) {
-  const headers = {'Authorization': 'Bearer 5AqAQLnZbxwyA4ThI2BXWuL31NQkHLS82dH0LMnZliA'}
   try {
     const response = await axioss({
       method: apiMethod,
