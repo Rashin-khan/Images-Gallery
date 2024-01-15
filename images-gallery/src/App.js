@@ -14,8 +14,8 @@ const App = () => {
                 <Em style={{'color': '#202020'}}>Your perfect Gallery..</Em>
               </Text>
           </Flex>
-          <Flex direction="column">
-              <Text size="5" weight="bold">
+          <Flex direction="column" gap="4">
+              <Text size="5" weight="bold" align="right">
                 <nav>
                   <NavLink to="/likedphotos" className="left-side">LIKED</NavLink>
                 </nav>

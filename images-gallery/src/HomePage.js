@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import getImagesList, { searchList, likePhoto } from './components/CallApi';
-import { Grid, Heading, Button, Flex, Avatar } from '@radix-ui/themes';
+import { Grid, Heading,IconButton, Button, Flex, Avatar } from '@radix-ui/themes';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 
 const HomePage = ({isLikedPhotos}) => {
@@ -49,10 +49,10 @@ const HomePage = ({isLikedPhotos}) => {
         <div className="mb-2">
             {/* <Heading as="h3" style={{'margin-bottom':'10px', 'margin-top':' 20px'}}>{!isLikedPhotos ? 'LIKED LIST' : 'IMAGES'}</Heading> */}
             {!isLikedPhotos && <div className='field'>
-                <MagnifyingGlassIcon/>
+                <MagnifyingGlassIcon width="20" height="22" className='icon'/>
                 <input type='text' placeholder='Enter your search query' value={searchQuery} onChange={handleChange}/>
                 <Flex align="center" gap="5" display="inline-flex" justify="center">
-                    <Button size="3" className='button' onClick={() => {setPageNo(1);getList('search')}}>Search</Button>
+                    <Button size="3" className='btn' onClick={() => {setPageNo(1);getList('search')}}>Search</Button>
                 </Flex>
             </div>}
             {loading ? <div>Loading....</div> : null}
