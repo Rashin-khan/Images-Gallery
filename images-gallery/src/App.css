@@ -13,6 +13,35 @@
   }
 }
 
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container {
+  margin-top: 100px
+}
+
+.container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .btn:hover {
+  background-color: black;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 5vh;
@@ -31,6 +60,16 @@
   position: relative;
   padding: 10px 15px 10px 100px;
   font-weight: bold;
+}
+
+.left-side {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  position: relative;
+  padding: 10px 15px 10px 100px;
+  font-weight: bold;
+  color: white;
 }
 
 .field input {
