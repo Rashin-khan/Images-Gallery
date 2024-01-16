@@ -19,7 +19,9 @@ async function getImagesList(pageNo, isLikedPhotos) {
       headers: headers
     })
 
-    return response?.data;
+    const data = response?.data;
+
+    return data;
   } catch (error) {
     return [];
   }

@@ -1,10 +1,10 @@
 import './App.css';
 import '@radix-ui/themes/styles.css';
 import { Routes, Route, NavLink } from 'react-router-dom'
-import { Grid, Flex, Text, Em } from '@radix-ui/themes';
+import { Grid, Flex, Text, Em, Avatar } from '@radix-ui/themes';
 import HomePage from './HomePage';
 import { useEffect, useState } from 'react';
-import { HeartFilledIcon } from '@radix-ui/react-icons';
+import { DashboardIcon, HeartFilledIcon } from '@radix-ui/react-icons';
 
 const App = () => {
 
@@ -26,7 +26,8 @@ const App = () => {
           <Grid align="center" columns="2" gap="5" p="3">
           <Flex direction="column">
               <Text size="8" weight="bold">
-                <Em style={{'color': '#202020'}}>Your perfect Gallery..</Em>
+                <DashboardIcon width="40" height="42" className="dashboard-icon d-lg-none" color='black'/>
+                {browserWidth >= 768 ? <Em style={{'color': '#202020', 'padding': '4px 4px 0px 13px'}}>Your perfect Gallery..</Em> : null}
               </Text>
           </Flex>
           <Flex direction="column" gap="4">
