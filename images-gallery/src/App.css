@@ -34,11 +34,34 @@
 
 }
 
-.container .btn {
-  position: absolute;
-  top: 83%;
+div.gallery {
+  margin: 8px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 200px;
+  border-radius: 10px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 110%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+div.gallery button {
+  /* position: absolute; */
+  top: 90%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(0%, -138%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
   color: white;

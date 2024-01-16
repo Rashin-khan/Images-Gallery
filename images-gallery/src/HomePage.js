@@ -69,16 +69,10 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
                                 fallback="Alt"
                             />
                         </Flex> : null :
-                        <Flex position="relative" align="center" gap="4">
-                            <Avatar
-                                size="9"
-                                src={items.urls.thumb}
-                                fallback="Alt"
-                            />
-                            <div className="container">
-                                <button onClick={() => handleLike(items.id, items.liked_by_user)} className='btn'>{items.liked_by_user ? 'UNLIKE' : 'LIKE'}</button>
-                            </div>
-                    </Flex>
+                        <div class="gallery">
+                          <img src={items.urls.thumb} alt="Cinque Terre" width="600px" height="600" />
+                          <button onClick={() => handleLike(items.id, items.liked_by_user)} className='btn'>{items.liked_by_user ? 'UNLIKE' : 'LIKE'}</button>
+                      </div>
                 )) : 
                 <Text size="8" weight="bold">
                     <Em style={{'color': '#202020', 'padding': '4px 4px 0px 13px'}}>No Images Found! Try again later or Go back</Em>
