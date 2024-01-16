@@ -35,12 +35,6 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
         return(() => {setListOfImages([])})
     },[pageNo])
 
-    useEffect(() => {
-        if(searchQuery && searchQuery !== '' && searchQuery!== null) {
-            getList('search');
-        }
-    }, [pageNo, searchQuery])
-
     const handleNextPage = (type) => {
         if(type === 'inc' && listOfImages?.length === 8) {
             setPageNo((prevValue) => prevValue + 1); 
@@ -51,7 +45,6 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
 
     return (
         <div className="mb-2">
-            {/* <Heading as="h3" style={{'margin-bottom':'10px', 'margin-top':' 20px'}}>{!isLikedPhotos ? 'LIKED LIST' : 'IMAGES'}</Heading> */}
             {!isLikedPhotos && <div className='field'>
                 <MagnifyingGlassIcon width="20" height="22" className='icon'/>
                 <input type='text' placeholder='Enter your search query' value={searchQuery} onChange={handleChange}/>
@@ -63,7 +56,7 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
             {loading ? <div>Loading....</div> : null}
 
             <Grid columns={browserWidth >= 768 ? "4" : '2'} gap="4" width="auto" display="inline-grid" style={{'margin-top': '50px'}}>
-                {!loading && listOfImages ? listOfImages?.map((items, index) => (
+                {!loading && listOfImages?.map((items, index) => (
                     isLikedPhotos ? items.liked_by_user ? 
                         <Flex position="relative" align="center" gap="4">
                             <Avatar
@@ -72,23 +65,23 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
                                 fallback="Alt"
                             />
                         </Flex> : null :
-                        <div class="gallery">
+                        <div class="gallery" key={index}>
                           <img src={items.urls.thumb} alt="Cinque Terre" width="600px" height="600" />
                           <button onClick={() => handleLike(items.id, items.liked_by_user)} className='btn'>{items.liked_by_user ? 'UNLIKE' : 'LIKE'}</button>
                       </div>
-                )) : 
-                <Text size="8" weight="bold">
-                    <Em style={{'color': '#202020', 'padding': '4px 4px 0px 13px'}}>No Images Found! Try again later or Go back</Em>
-                </Text>
+                ))
                 }
             </Grid>
+            {listOfImages?.length === 0 && <Text size="8" weight="bold" className="center">
+                    <Em style={{'color': '#202020', 'padding': '4px 4px 0px 13px'}}>No Images Found! Try again later or Go back</Em>
+                </Text>}
 
-            <div className='bottom-container'>
+            {listOfImages?.length>0 && <div className='bottom-container'>
             <Flex align="center" gap="5" display="inline-flex" justify="center">
                 <Button size="3" className='button' mb="3" onClick={() => handleNextPage('inc')}>Next</Button>
                 <Button size="3" className='button' mb="3" onClick={() => handleNextPage('dec')}>Preview</Button>
             </Flex>
-            </div>
+            </div>}
         </div>
       );
 }
