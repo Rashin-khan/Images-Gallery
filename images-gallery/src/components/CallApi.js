@@ -55,4 +55,19 @@ export async function likePhoto(id, apiMethod) {
   }
 }
 
+export async function getRandomBackgroundPhoto(id, apiMethod) {
+  try {
+    const response = await axioss({
+      method: apiMethod,
+      url: `${API_URL}photos/random?query=white`,
+      headers: headers
+    })
+    document.getElementById('App').style.backgroundImage = `url(${response?.urls.thumb})`;
+
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 export default getImagesList

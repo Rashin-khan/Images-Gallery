@@ -3,6 +3,7 @@
   background-color: white;
   width: 100%;
   height: auto;
+  background-image: url("https://source.unsplash.com/320x240/?sky");
 }
 
 @media screen and (max-width: 768px) {

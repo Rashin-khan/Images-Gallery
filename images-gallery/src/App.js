@@ -5,6 +5,7 @@ import { Grid, Flex, Text, Em, Avatar } from '@radix-ui/themes';
 import HomePage from './HomePage';
 import { useEffect, useState } from 'react';
 import { DashboardIcon, HeartFilledIcon } from '@radix-ui/react-icons';
+import { getRandomBackgroundPhoto } from './components/CallApi';
 
 const App = () => {
 
@@ -18,6 +19,10 @@ const App = () => {
     return () => {
         window.removeEventListener('resize', handleResize);
     }
+  }, []);
+
+  useEffect(() => {
+    getRandomBackgroundPhoto();
   }, []);
 
   return (
