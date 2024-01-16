@@ -26,7 +26,7 @@ const App = () => {
           <Grid align="center" columns="2" gap="5" p="3">
           <Flex direction="column">
               <Text size="8" weight="bold">
-                <DashboardIcon width="40" height="42" className="dashboard-icon d-lg-none" color='black'/>
+                <DashboardIcon width="40" height="42" className="dashboard-icon" color='black'/>
                 {browserWidth >= 768 ? <Em style={{'color': '#202020', 'padding': '4px 4px 0px 13px'}}>Your perfect Gallery..</Em> : null}
               </Text>
           </Flex>

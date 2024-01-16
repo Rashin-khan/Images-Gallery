@@ -39,7 +39,7 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
     }, [pageNo, searchQuery])
 
     const handleNextPage = (type) => {
-        if(type === 'inc' && listOfImages?.length === 9) {
+        if(type === 'inc' && listOfImages?.length === 8) {
             setPageNo((prevValue) => prevValue + 1); 
         } else if(pageNo > 1) {
             setPageNo((prevValue) => prevValue - 1); 
@@ -81,7 +81,7 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
                     </Flex>
                 )) : 
                 <Text size="8" weight="bold">
-                    <Em style={{'color': '#202020', 'padding': '4px 4px 0px 13px'}}>No Images Found! Try again later</Em>
+                    <Em style={{'color': '#202020', 'padding': '4px 4px 0px 13px'}}>No Images Found! Try again later or Go back</Em>
                 </Text>
                 }
             </Grid>
