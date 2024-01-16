@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import getImagesList, { searchList, likePhoto } from './components/CallApi';
-import { Grid, Heading,IconButton, Button, Flex, Avatar } from '@radix-ui/themes';
+import { Grid, Button, Flex, Avatar } from '@radix-ui/themes';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 
-const HomePage = ({isLikedPhotos}) => {
+const HomePage = ({isLikedPhotos, browserWidth}) => {
     const [listOfImages, setListOfImages] = useState([]);
     const [pageNo, setPageNo] = useState(1);
     const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ const HomePage = ({isLikedPhotos}) => {
 
     const getList = async(type) => {
         setLoading(true);
-        const res = type === 'search' ? await searchList(pageNo, searchQuery) : await getImagesList(pageNo, searchQuery);
+        const res = type === 'search' ? await searchList(pageNo, searchQuery) : await getImagesList(pageNo, isLikedPhotos);
         setListOfImages(res);
         setLoading(false);
     }
@@ -27,9 +27,9 @@ const HomePage = ({isLikedPhotos}) => {
         getList();
     }
     
-    // useEffect(() => {
-    //     getList();
-    // },[pageNo])
+    useEffect(() => {
+        getList();
+    },[pageNo])
 
     useEffect(() => {
         if(searchQuery && searchQuery !== '' && searchQuery!== null) {
@@ -56,28 +56,30 @@ const HomePage = ({isLikedPhotos}) => {
                 </Flex>
             </div>}
             {loading ? <div>Loading....</div> : null}
-            <Grid columns="4" gap="4" width="auto" display="inline-grid">
+
+            <Grid columns={browserWidth >= 768 ? "4" : '2'} gap="4" width="auto" display="inline-grid" style={{'margin-top': '50px'}}>
                 {!loading && listOfImages?.map((items, index) => (
-                    isLikedPhotos && items.liked_by_user ? 
+                    isLikedPhotos ? items.liked_by_user ? 
                         <Flex position="relative" align="center" gap="4">
                             <Avatar
                                 size="9"
                                 src={items.urls.thumb}
                                 fallback="A"
                             />
-                        </Flex> :
+                        </Flex> : null :
                         <Flex position="relative" align="center" gap="4">
-                        <div className="container">
                             <Avatar
                                 size="9"
                                 src={items.urls.thumb}
                                 fallback="A"
                             />
-                            <button onClick={() => handleLike(items.id, items.liked_by_user)} className='btn'>{items.liked_by_user ? 'UNLIKE' : 'LIKE'}</button>
-                        </div>
+                            <div className="container">
+                                <button onClick={() => handleLike(items.id, items.liked_by_user)} className='btn'>{items.liked_by_user ? 'UNLIKE' : 'LIKE'}</button>
+                            </div>
                     </Flex>
                 ))}
             </Grid>
+
             <div className='bottom-container'>
             <Flex align="center" gap="5" display="inline-flex" justify="center">
                 <Button size="3" className='button' mb="3" onClick={() => handleNextPage('inc')}>Next</Button>

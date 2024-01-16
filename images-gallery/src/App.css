@@ -34,7 +34,7 @@
 
 .container .btn {
   position: absolute;
-  top: 50%;
+  top: 83%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -80,6 +80,20 @@
   color: white;
   text-decoration: unset;
 }
+
+.left-side .tooltiptext {
+  visibility:hidden;
+  width: 120px;
+  color: rgb(65, 63, 63);
+  text-align: left;
+  padding: 30px 100px 50px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
 
 .field input {
   width: 50%;

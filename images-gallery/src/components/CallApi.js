@@ -4,11 +4,18 @@ const API_URL = 'https://api.unsplash.com/';
 const CLIENT_CODE = 'client_id=i7ckBmIOpgDXmKHSxeJ9xXS7V8ytZ3hkzmcSSOWoaHw';
 const headers = {'Authorization': 'Bearer 5AqAQLnZbxwyA4ThI2BXWuL31NQkHLS82dH0LMnZliA'}
 
-async function getImagesList(pageNo) {
+async function getImagesList(pageNo, isLikedPhotos) {
+  let url = '';
+  if(isLikedPhotos) {
+    url = `${API_URL}users/rashinkhan/likes?page=${pageNo}`;
+  } else {
+    url = `${API_URL}photos/?page=${pageNo}&${CLIENT_CODE}`
+  }
+
   try {
     const response = await axioss({
       method: 'get',
-      url: `${API_URL}photos/?page=${pageNo}&${CLIENT_CODE}`,
+      url: url,
       headers: headers
     })
 
@@ -17,7 +24,6 @@ async function getImagesList(pageNo) {
     return [];
   }
 }
-
 
 export async function searchList(pageNo, query) {
   try {
