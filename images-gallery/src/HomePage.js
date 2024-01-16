@@ -72,7 +72,7 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
                 ))
                 }
             </Grid>
-            {listOfImages?.length === 0 && <Text size="8" weight="bold" className="center">
+            {!loading && listOfImages?.length === 0 && <Text size="8" weight="bold" className="center">
                     <Em style={{'color': '#202020', 'padding': '4px 4px 0px 13px'}}>No Images Found! Try again later or Go back</Em>
                 </Text>}
 
