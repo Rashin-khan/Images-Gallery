@@ -22,7 +22,10 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    getRandomBackgroundPhoto();
+    const res = getRandomBackgroundPhoto();
+    if(document && document.getElementById('App')) {
+      document.getElementById('App').style.backgroundImage = `url(${res? res.urls.thumb : "https://source.unsplash.com/320x240/?sky"})`;
+    }
   }, []);
 
   return (

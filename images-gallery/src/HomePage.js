@@ -44,7 +44,7 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
     }
 
     return (
-        <div className="mb-2">
+        <div className="home-page">
             {!isLikedPhotos && <div className='field'>
                 <MagnifyingGlassIcon width="20" height="22" className='icon'/>
                 <input type='text' placeholder='Enter your search query' value={searchQuery} onChange={handleChange}/>

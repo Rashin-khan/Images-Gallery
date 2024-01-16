@@ -62,9 +62,8 @@ export async function getRandomBackgroundPhoto(id, apiMethod) {
       url: `${API_URL}photos/random?query=white`,
       headers: headers
     })
-    document.getElementById('App').style.backgroundImage = `url(${response?.urls.thumb})`;
 
-    return true;
+    return response?.urls.thumb;
   } catch (error) {
     return false;
   }
