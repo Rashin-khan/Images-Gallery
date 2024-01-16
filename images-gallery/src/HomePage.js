@@ -12,6 +12,9 @@ const HomePage = ({isLikedPhotos, browserWidth}) => {
 
     const handleChange = (e) => {
         setSearchQuery(e.target.value);
+        if(e.target.value === '') {
+            getList();
+        }
     }
 
     const getList = async(type) => {
