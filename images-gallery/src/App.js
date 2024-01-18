@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className="App">
-       <header className="App-header">
+       {/* <header className="App-header">
           <Grid align="center" columns="2" gap="5" p="3">
           <Flex direction="column">
               <Text size="8" weight="bold">
@@ -49,7 +49,7 @@ const App = () => {
               </Text>
           </Flex>
           </Grid>
-          </header>
+          </header> */}
         <Routes>
           <Route path="" element={<HomePage browserWidth={browserWidth}/>} />
           <Route path="/likedphotos" element={<HomePage isLikedPhotos={true} browserWidth={browserWidth}/>} />
